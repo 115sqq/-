@@ -1,0 +1,34 @@
+#include <stdio.h>  
+#define MAX 100  
+int main()  
+{  
+    int n, i, count = 0;  
+    double x[MAX], y[MAX], sum = 0.0, avg;  
+    printf("Введите количество элементов (1..%d): ", MAX);  
+    if (scanf("%d", &n) != 1 || n < 1 || n > MAX) {  
+        printf("Некорректный размер вектора\n");  
+        return 1;  
+    }  
+    for (i = 0; i < n; i++) {  
+        printf("x[%d] = ", i);  
+        scanf("%lf", &x[i]);  
+        y[i] = x[i] * x[i];  
+        sum += y[i];  
+    }  
+    avg = sum / n;  
+    for (i = 0; i < n; i++)  
+    {  
+        if (y[i] > avg)  
+        {  
+            count++;  
+        }  
+    }  
+    printf("Вектор Y:");  
+    for (i = 0; i < n; i++)  
+    {  
+        printf(" %.2f", y[i]);  
+    }  
+  printf("\nСреднее арифметическое Y: %.2f\n", avg);  
+    printf("Элементов Y больше среднего: %d\n", count);  
+    return 0;  
+} 
