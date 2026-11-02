@@ -1,0 +1,31 @@
+#include <stdio.h>  
+#define MAX 100  
+int main()  
+{  
+    int n, i;  
+    double x[MAX], t;  
+    printf("Введите количество элементов (1..%d): ", MAX);  
+    if (scanf("%d", &n) != 1 || n < 1 || n > MAX)  
+    {  
+     printf("Некорректный размер массива\n");  
+        return 1;  
+    }  
+    for (i = 0; i < n; i++)  
+    {  
+        printf("x[%d] = ", i);  
+        scanf("%lf", &x[i]);  
+    }  
+    for (i = 0; i < n / 2; i++)  
+    {  
+        t = x[i];  
+        x[i] = x[n - 1 - i];  
+        x[n - 1 - i] = t;  
+    }  
+    printf("Массив в обратном порядке:");  
+    for (i = 0; i < n; i++)  
+    {  
+        printf(" %g", x[i]);  
+    }  
+    printf("\n");  
+    return 0;  
+} 
