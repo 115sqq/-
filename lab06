@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <math.h>
+#define PI 3.14159265358979323846
+int main() 
+{
+    const double r1 = 1.524;   /* радиус орбиты Марса, а. е. */
+    const double r2 = 1.0;     /* радиус орбиты Земли, а. е. */
+    const double T1 = 1.881;   /* период обращения Марса, годы */
+    const double T2 = 1.0;     /* период обращения Земли, годы */
+    const double dt = 0.1;     /* шаг по времени, годы */
+    const int steps = 22;      /* число шагов: t от 0 до 2.2 года */
+    double w1, w2, t, x, y;
+    int k;
+    w1 = 2.0 * PI / T1;
+    w2 = 2.0 * PI / T2;
+    printf("   t, лет       x, а.е.      y, а.е.\n");
+    for (k = 0; k <= steps; k++) {
+        t = k * dt;
+        x = r1 * cos(w1 * t) - r2 * cos(w2 * t);
+        y = r1 * sin(w1 * t) - r2 * sin(w2 * t);
+        printf("%8.2f %12.3f %12.3f\n", t, x, y);
+    }
+    return 0;
+}
